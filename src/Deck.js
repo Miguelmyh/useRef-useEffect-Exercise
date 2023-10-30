@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Card from "./Card";
+import { v4 as uuid } from "uuid";
 
 const Deck = () => {
   const [deck, setDeck] = useState(null);
@@ -71,7 +72,12 @@ const Deck = () => {
       {renderDrawBtnIfOk()}
       {renderShuffleBtnIfOk()}
       {cards.map((card) => (
-        <Card value={card.value} suits={card.suits} image={card.image} />
+        <Card
+          key={uuid()}
+          value={card.value}
+          suits={card.suits}
+          image={card.image}
+        />
       ))}
     </>
   );
